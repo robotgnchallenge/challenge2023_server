@@ -1,0 +1,57 @@
+<?xml version = "1.0"?>
+<robot name = "minnav_kinova_xacro" xmlns:xacro = "http://www.ros.org/wiki/xacro">
+  <xacro:property name="M_PI" value="3.141593"/>
+
+  <!-- mobile base include -->
+  <xacro:include filename = "$(find minnav_moma_description)/urdf/v3/minnav_moma_description.urdf.xacro" />
+  <link name="camera_mount_link" />
+  <joint name="camera_mount_joint" type="fixed">
+    <origin xyz="0.02 0.1 0.03" rpy="0 0 0" />
+    <parent link="Head"/>
+    <child link="camera_mount_link"/>
+  </joint>
+
+  <!-- minnav_moma robot base and body -->
+  <minnav_moma_robot/>
+
+
+  <!-- arm include -->
+  <xacro:include filename="$(find kinova_description)/urdf/j2s6s200.xacro" />
+  <!-- kinova 7dof arm -->
+  <link name="arm_mount_link" />
+  <joint name="arm_mount_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0 1.5707963 0" />
+    <parent link="ArmBase"/>
+    <child link="arm_mount_link"/>
+  </joint>
+  <xacro:j2s6s200 base_parent="arm_mount_link"/> 
+
+
+  <!-- realsense d435 -->
+  <xacro:include filename="$(find minnav_moma_description)/urdf/realsense_d435.urdf.xacro" />
+
+  <!-- realsense -->
+  <link name="realsense_coupling_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://minnav_moma_description/meshes/kinova_realsense_coupling.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.20 0.20 0.20 1" />
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="realsense_coupling_joint" type="fixed">
+    <origin xyz="0 0 0.007" rpy="0 0 0" />
+    <parent link="j2s6s200_link_6"/>
+    <child link="realsense_coupling_link"/>
+  </joint>
+
+  <xacro:sensor_d435 parent="realsense_coupling_link" prefix="camera">
+    <origin xyz="0.0875 0 -0.01515" rpy="0 ${M_PI/2} 0"/>
+  </xacro:sensor_d435>
+
+
+</robot>

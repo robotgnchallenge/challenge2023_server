@@ -1,0 +1,7 @@
+int32 segmap_id
+
+---
+
+float32[] scores
+geometry_msgs/PoseStamped[] grasp_poses
+

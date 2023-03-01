@@ -1,0 +1,26 @@
+<launch>
+ 
+<arg name="rviz"  default="false"/>
+<arg name="robot_name" default="MirKinova"/>
+ 
+<arg name="init_x" default="1.72"  />
+<arg name="init_y" default="-0.17"  />
+<arg name="init_a" default="-0.3863461"/>
+
+
+<arg name="map_path" default ="$(find webots_ros)/config/map/3.yaml" />
+<arg name="true_false" default ="true" />
+<arg name="mobile_base" default ="Mir" />
+
+<!-- launch naviagtion -->
+<include file="$(find webots_ros)/launch/webots_nav_with_mpc.launch">
+    <arg name="rviz" value="$(arg rviz)"/>
+    <arg name="init_x" value="$(arg init_x)"/>
+    <arg name="init_y" value="$(arg init_y)"/>
+    <arg name="init_a" value="$(arg init_a)"/>
+    <arg name="map_path" value ="$(arg map_path)" />
+    <arg name="true_false" value ="$(arg true_false)" />
+</include>
+
+
+</launch>

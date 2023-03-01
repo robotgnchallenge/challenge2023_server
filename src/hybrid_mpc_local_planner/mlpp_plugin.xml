@@ -1,0 +1,7 @@
+<library path="lib/libmpc_local_planner_plugin">
+	<class name ="hybrid_mpc_local_planner/MPCLocalPlannerPlugin" type ="hybrid_mpc_local_planner::MPCLocalPlannerPlugin" base_class_type= "nav_core::BaseLocalPlanner">
+		<description>
+			A* and MPC Plugin for BaseLocalPlanner that allows you to follow the global path as it is.
+		</description>
+	</class>
+</library>

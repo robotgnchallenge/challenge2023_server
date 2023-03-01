@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'JT_ArmBase', 'JT_Pantilt_PanLink', 'JT_Pantilt_TiltLink', 'JT_UniwheelPivot_LF', 'JT_UniWheel_LF', 'JT_UniwheelPivot_RB', 'JT_Uniwheel_RB', 'JT_UniwheelPivot_RF', 'JT_Uniwheel_RF', 'JT_UniwheelPivot_LB', 'JT_Uniwheel_LB', 'JT_DriWheel_L', 'JT_DriWheel_R', ]

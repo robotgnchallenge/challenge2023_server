@@ -1,0 +1,5 @@
+kinova-ros/kinova_bringup
+/home/cheang/server_ws/devel/.private/kinova_bringup/cmake.lock /home/cheang/server_ws/devel/./cmake.lock
+/home/cheang/server_ws/devel/.private/kinova_bringup/share/kinova_bringup/cmake/kinova_bringupConfig.cmake /home/cheang/server_ws/devel/share/kinova_bringup/cmake/kinova_bringupConfig.cmake
+/home/cheang/server_ws/devel/.private/kinova_bringup/share/kinova_bringup/cmake/kinova_bringupConfig-version.cmake /home/cheang/server_ws/devel/share/kinova_bringup/cmake/kinova_bringupConfig-version.cmake
+/home/cheang/server_ws/devel/.private/kinova_bringup/lib/pkgconfig/kinova_bringup.pc /home/cheang/server_ws/devel/lib/pkgconfig/kinova_bringup.pc

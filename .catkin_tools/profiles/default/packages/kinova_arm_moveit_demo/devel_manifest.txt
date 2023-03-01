@@ -1,0 +1,9 @@
+kinova-ros/kinova_moveit/kinova_arm_moveit_demo
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/cmake.lock /home/cheang/server_ws/devel/./cmake.lock
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/share/kinova_arm_moveit_demo/cmake/kinova_arm_moveit_demoConfig.cmake /home/cheang/server_ws/devel/share/kinova_arm_moveit_demo/cmake/kinova_arm_moveit_demoConfig.cmake
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/share/kinova_arm_moveit_demo/cmake/kinova_arm_moveit_demoConfig-version.cmake /home/cheang/server_ws/devel/share/kinova_arm_moveit_demo/cmake/kinova_arm_moveit_demoConfig-version.cmake
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/lib/pkgconfig/kinova_arm_moveit_demo.pc /home/cheang/server_ws/devel/lib/pkgconfig/kinova_arm_moveit_demo.pc
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/lib/kinova_arm_moveit_demo/motion_plan /home/cheang/server_ws/devel/lib/kinova_arm_moveit_demo/motion_plan
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/lib/kinova_arm_moveit_demo/test_accuracy /home/cheang/server_ws/devel/lib/kinova_arm_moveit_demo/test_accuracy
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/lib/kinova_arm_moveit_demo/work_scene /home/cheang/server_ws/devel/lib/kinova_arm_moveit_demo/work_scene
+/home/cheang/server_ws/devel/.private/kinova_arm_moveit_demo/lib/kinova_arm_moveit_demo/pick_place /home/cheang/server_ws/devel/lib/kinova_arm_moveit_demo/pick_place

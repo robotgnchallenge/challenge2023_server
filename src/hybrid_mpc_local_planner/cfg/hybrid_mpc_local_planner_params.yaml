@@ -1,0 +1,25 @@
+mpc_planner_test:
+
+ # Path
+  
+ obstacle_weight: 0.3
+ astar_heuristic_weight: 0.1
+ roadmap_proximity_weight: 0.1
+ viapoint_threshold_distance: 0.4
+
+ # Planner
+
+ goal_x_threshold: 0.3 # 0.25
+ goal_y_threshold: 0.25 # 0.25
+ goal_yaw_threshold: 0.05 # 0.2 
+ yaw_pid_kp: 2.0
+ yaw_pid_kd: 0.0
+ yaw_pid_output_max: 3.5
+ yaw_pid_ctrl_dead_th: 0.025
+ rotation_in_place_speed: 4.0
+ min_speed: 0.0
+ max_speed: 2.5
+ min_angular_speed: -3.0
+ max_angular_speed: 3.0
+ average_speed: 0.9
+ unknown_space_valid: true

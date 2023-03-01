@@ -1,0 +1,651 @@
+#VRML_SIM R2022b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the MOMA_V3_SIMP
+# Extracted from: /home/cheang/catkin_ws/src/minnav_moma_description/urdf/v3/MOMA_V3_URDF.urdf
+
+PROTO MOMA_V3_SIMP [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "MOMA_V3_SIMP"  # Is `Robot.name`.
+  field  SFString    controller      "void"          # Is `Robot.controller`.
+  field  MFString    controllerArgs  []              # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""              # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE           # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE            # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE           # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF moma_base_link_material PBRAppearance {
+          baseColor 0.752941 0.752941 0.752941
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF moma_base_link Mesh {
+          url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/moma_base_link.STL"
+        }
+      }
+      SliderJoint {
+        jointParameters JointParameters {
+          axis 0.000004 0.000000 1.000000
+        }
+        device [
+          LinearMotor {
+            name "JT_ArmBase"
+            maxPosition 0.49
+            maxForce 10000
+          }
+          PositionSensor {
+            name "JT_ArmBase_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.034000 -0.001000 0.333350
+          rotation 0.000000 1.000000 0.000000 1.570800
+          children [
+            Shape {
+              appearance DEF ArmBase_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF ArmBase Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/ArmBase.STL"
+              }
+            }
+          ]
+          name "ArmBase"
+          boundingObject USE ArmBase
+          physics Physics {
+            density -1
+            mass 0.713162
+            centerOfMass [ 0.030855 0.000944 -0.027274 ]
+            inertiaMatrix [
+              9.963011e-04 1.523866e-03 2.205348e-03
+              -1.066043e-06 6.183052e-05 8.355476e-07
+            ]
+          }
+        }
+      }
+      Solid {
+        translation 0.213000 0.000000 0.090500
+        rotation -0.000003 0.707108 0.707105 3.141598
+        children [
+          Shape {
+            appearance DEF LIDAR_material PBRAppearance {
+              baseColor 0.752941 0.752941 0.752941
+              roughness 1.000000
+              metalness 0
+            }
+            geometry DEF LIDAR Mesh {
+              url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/LIDAR.STL"
+            }
+          }
+        ]
+        name "LIDAR"
+        boundingObject USE LIDAR
+        physics Physics {
+          density -1
+          mass 0.102884
+          centerOfMass [ 0.000082 0.019365 0.000000 ]
+          inertiaMatrix [
+            3.662255e-05 4.697584e-05 3.698058e-05
+            1.058741e-07 -3.585483e-12 -6.026047e-13
+          ]
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 -0.000000 1.000000
+          anchor -0.021000 0.000000 1.008100
+        }
+        device [
+          RotationalMotor {
+            name "JT_Pantilt_PanLink"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_Pantilt_PanLink_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.021000 0.000000 1.008100
+          rotation 0.000000 0.000000 -1.000000 1.570800
+          children [
+            Shape {
+              appearance DEF Pantilt_PanLink_material PBRAppearance {
+                baseColor 0.796078 0.823529 0.937255
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF Pantilt_PanLink Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Pantilt_PanLink.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -1.000000 -0.000007 -0.000000
+                anchor 0.000000 0.000250 0.041300
+              }
+              device [
+                RotationalMotor {
+                  name "JT_Pantilt_TiltLink"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "JT_Pantilt_TiltLink_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.000250 0.041300
+                rotation -0.000003 0.707108 0.707105 3.141598
+                children [
+                  Shape {
+                    appearance DEF Pantilt_TiltLink_material PBRAppearance {
+                      baseColor 0.796078 0.823529 0.937255
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF Pantilt_TiltLink Mesh {
+                      url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Pantilt_TiltLink.STL"
+                    }
+                  }
+                  Solid {
+                    translation 0.000000 0.070500 0.079500
+                    children [
+                      Shape {
+                        appearance DEF Head_material PBRAppearance {
+                          baseColor 0.752941 0.752941 0.752941
+                          roughness 1.000000
+                          metalness 0
+                        }
+                        geometry DEF Head Mesh {
+                          url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Head.STL"
+                        }
+                      }
+                    ]
+                    name "Head"
+                    boundingObject USE Head
+                    physics Physics {
+                      density -1
+                      mass 0.398951
+                      centerOfMass [ 0.000007 -0.002592 -0.075218 ]
+                      inertiaMatrix [
+                        8.600134e-04 1.827475e-03 1.284625e-03
+                        -2.543654e-08 1.010544e-07 5.232406e-06
+                      ]
+                    }
+                  }
+                ]
+                name "Pantilt_TiltLink"
+                boundingObject USE Pantilt_TiltLink
+                physics Physics {
+                  density -1
+                  mass 0.119003
+                  centerOfMass [ -0.000000 0.031330 0.000000 ]
+                  inertiaMatrix [
+                    7.904642e-05 3.579845e-04 2.828441e-04
+                    -3.793031e-16 7.251789e-19 2.374649e-16
+                  ]
+                }
+              }
+            }
+          ]
+          name "Pantilt_PanLink"
+          boundingObject USE Pantilt_PanLink
+          physics Physics {
+            density -1
+            mass 0.125638
+            centerOfMass [ 0.000000 -0.000000 0.022269 ]
+            inertiaMatrix [
+              5.798404e-05 1.589657e-04 1.508938e-04
+              -4.950954e-09 1.264529e-16 1.008251e-19
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor 0.200000 0.143500 0.030850
+        }
+        device [
+          RotationalMotor {
+            name "JT_UniwheelPivot_LF"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_UniwheelPivot_LF_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.200000 0.143500 0.030850
+          rotation 0.000000 0.000000 1.000000 1.570800
+          children [
+            Shape {
+              appearance DEF UniwheelPivot_LF_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF UniwheelPivot_LF Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/UniwheelPivot_LF.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -1.000000 -0.000004 0.000000
+                anchor 0.000000 0.024000 -0.077350
+              }
+              device [
+                RotationalMotor {
+                  name "JT_UniWheel_LF"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "JT_UniWheel_LF_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.024000 -0.077350
+                rotation 0.056191 -0.056191 0.996838 1.573967
+                children [
+                  Shape {
+                    appearance DEF UniWheel_LF_material PBRAppearance {
+                      baseColor 0.752941 0.752941 0.752941
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF UniWheel_LF Mesh {
+                      url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/UniWheel_LF.STL"
+                    }
+                  }
+                ]
+                name "UniWheel_LF"
+                boundingObject USE UniWheel_LF
+                physics Physics {
+                  density -1
+                  mass 0.131455
+                  centerOfMass [ -0.000017 -0.000000 -0.000149 ]
+                  inertiaMatrix [
+                    4.676142e-05 8.851341e-05 4.676306e-05
+                    2.927363e-11 -4.255079e-11 -1.154165e-11
+                  ]
+                }
+              }
+            }
+          ]
+          name "UniwheelPivot_LF"
+          boundingObject USE UniwheelPivot_LF
+          physics Physics {
+            density -1
+            mass 0.084735
+            centerOfMass [ -0.000000 0.018226 -0.064229 ]
+            inertiaMatrix [
+              6.071357e-05 3.494743e-05 3.347561e-05
+              1.381065e-18 -6.216642e-19 1.163400e-05
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor -0.200000 -0.143500 0.030850
+        }
+        device [
+          RotationalMotor {
+            name "JT_UniwheelPivot_RB"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_UniwheelPivot_RB_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.200000 -0.143500 0.030850
+          rotation 0.000000 0.000000 1.000000 1.570800
+          children [
+            Shape {
+              appearance DEF UniwheelPivot_RB_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF UniwheelPivot_RB Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/UniwheelPivot_RB.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -1.000000 -0.000004 0.000000
+                anchor 0.000000 0.024000 -0.077350
+              }
+              device [
+                RotationalMotor {
+                  name "JT_Uniwheel_RB"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "JT_Uniwheel_RB_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.024000 -0.077350
+                rotation 0.056191 -0.056191 0.996838 1.573967
+                children [
+                  Shape {
+                    appearance DEF Uniwheel_RB_material PBRAppearance {
+                      baseColor 0.752941 0.752941 0.752941
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF Uniwheel_RB Mesh {
+                      url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Uniwheel_RB.STL"
+                    }
+                  }
+                ]
+                name "Uniwheel_RB"
+                boundingObject USE Uniwheel_RB
+                physics Physics {
+                  density -1
+                  mass 0.131455
+                  centerOfMass [ -0.000017 -0.000000 -0.000149 ]
+                  inertiaMatrix [
+                    4.676142e-05 8.851341e-05 4.676306e-05
+                    2.927363e-11 -4.255079e-11 -1.154165e-11
+                  ]
+                }
+              }
+            }
+          ]
+          name "UniwheelPivot_RB"
+          boundingObject USE UniwheelPivot_RB
+          physics Physics {
+            density -1
+            mass 0.084735
+            centerOfMass [ -0.000000 0.018226 -0.064229 ]
+            inertiaMatrix [
+              6.071357e-05 3.494743e-05 3.347561e-05
+              1.384808e-18 -6.245967e-19 1.163400e-05
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor 0.200000 -0.143500 0.030850
+        }
+        device [
+          RotationalMotor {
+            name "JT_UniwheelPivot_RF"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_UniwheelPivot_RF_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.200000 -0.143500 0.030850
+          rotation 0.000000 0.000000 1.000000 1.570800
+          children [
+            Shape {
+              appearance DEF UniwheelPivot_RF_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF UniwheelPivot_RF Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/UniwheelPivot_RF.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -1.000000 -0.000000 0.000000
+                anchor 0.000000 0.024000 -0.077350
+              }
+              device [
+                RotationalMotor {
+                  name "JT_Uniwheel_RF"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "JT_Uniwheel_RF_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.024000 -0.077350
+                rotation 0.056192 -0.056192 0.996837 1.573964
+                children [
+                  Shape {
+                    appearance DEF Uniwheel_RF_material PBRAppearance {
+                      baseColor 0.752941 0.752941 0.752941
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF Uniwheel_RF Mesh {
+                      url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Uniwheel_RF.STL"
+                    }
+                  }
+                ]
+                name "Uniwheel_RF"
+                boundingObject USE Uniwheel_RF
+                physics Physics {
+                  density -1
+                  mass 0.131455
+                  centerOfMass [ -0.000017 -0.000000 -0.000149 ]
+                  inertiaMatrix [
+                    4.676142e-05 8.851341e-05 4.676306e-05
+                    2.927363e-11 -4.255079e-11 -1.154165e-11
+                  ]
+                }
+              }
+            }
+          ]
+          name "UniwheelPivot_RF"
+          boundingObject USE UniwheelPivot_RF
+          physics Physics {
+            density -1
+            mass 0.084735
+            centerOfMass [ -0.000000 0.018226 -0.064229 ]
+            inertiaMatrix [
+              6.071357e-05 3.494743e-05 3.347561e-05
+              1.387431e-18 -6.267586e-19 1.163400e-05
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor -0.200000 0.143500 0.030850
+        }
+        device [
+          RotationalMotor {
+            name "JT_UniwheelPivot_LB"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_UniwheelPivot_LB_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.200000 0.143500 0.030850
+          rotation 0.000000 0.000000 1.000000 1.570800
+          children [
+            Shape {
+              appearance DEF UniwheelPivot_LB_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF UniwheelPivot_LB Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/UniwheelPivot_LB.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis -1.000000 -0.000000 0.000000
+                anchor 0.000000 0.024000 -0.077350
+              }
+              device [
+                RotationalMotor {
+                  name "JT_Uniwheel_LB"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "JT_Uniwheel_LB_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 0.024000 -0.077350
+                rotation 0.056192 -0.056192 0.996837 1.573964
+                children [
+                  Shape {
+                    appearance DEF Uniwheel_LB_material PBRAppearance {
+                      baseColor 0.752941 0.752941 0.752941
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF Uniwheel_LB Mesh {
+                      url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/Uniwheel_LB.STL"
+                    }
+                  }
+                ]
+                name "Uniwheel_LB"
+                boundingObject USE Uniwheel_LB
+                physics Physics {
+                  density -1
+                  mass 0.131455
+                  centerOfMass [ -0.000017 -0.000000 -0.000149 ]
+                  inertiaMatrix [
+                    4.676142e-05 8.851341e-05 4.676306e-05
+                    2.927363e-11 -4.255079e-11 -1.154165e-11
+                  ]
+                }
+              }
+            }
+          ]
+          name "UniwheelPivot_LB"
+          boundingObject USE UniwheelPivot_LB
+          physics Physics {
+            density -1
+            mass 0.084735
+            centerOfMass [ 0.000000 0.018226 -0.064229 ]
+            inertiaMatrix [
+              6.071357e-05 3.494743e-05 3.347561e-05
+              3.579379e-20 -1.453731e-20 1.163400e-05
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -0.000004 1.000000 -0.000000
+          anchor 0.000000 0.171100 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "JT_DriWheel_L"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_DriWheel_L_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.000000 0.171100 0.000000
+          rotation 0.577350 0.577352 0.577350 2.094399
+          children [
+            Shape {
+              appearance DEF DriWheel_L_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF DriWheel_L Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/DriWheel_L.STL"
+              }
+            }
+          ]
+          name "DriWheel_L"
+          boundingObject USE DriWheel_L
+          physics Physics {
+            density -1
+            mass 0.617725
+            centerOfMass [ 0.031654 0.000000 -0.000000 ]
+            inertiaMatrix [
+              1.372896e-03 7.692661e-04 7.692493e-04
+              -1.421179e-09 2.421895e-09 8.571351e-09
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -0.000000 1.000000 0.000000
+          anchor 0.000000 -0.171100 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "JT_DriWheel_R"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "JT_DriWheel_R_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.000000 -0.171100 0.000000
+          rotation 0.577350 0.577350 0.577350 2.094395
+          children [
+            Shape {
+              appearance DEF DriWheel_R_material PBRAppearance {
+                baseColor 0.752941 0.752941 0.752941
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF DriWheel_R Mesh {
+                url "/home/cheang/catkin_ws/src/minnav_moma_description/meshes/v3/DriWheel_R.STL"
+              }
+            }
+          ]
+          name "DriWheel_R"
+          boundingObject USE DriWheel_R
+          physics Physics {
+            density -1
+            mass 0.617725
+            centerOfMass [ -0.031654 0.000000 0.000000 ]
+            inertiaMatrix [
+              1.372896e-03 7.692661e-04 7.692493e-04
+              1.421179e-09 2.421895e-09 -8.571351e-09
+            ]
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE moma_base_link
+    physics Physics {
+      density -1
+      mass 64.999952
+      centerOfMass [ -0.069725 0.000094 0.185981 ]
+      inertiaMatrix [
+        1.350695e+00 9.630941e-01 1.340626e+00
+        4.797547e-04 1.481973e-06 -7.033490e-06
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+kinova-ros/kinova_description
+/home/cheang/server_ws/devel/.private/kinova_description/cmake.lock /home/cheang/server_ws/devel/./cmake.lock
+/home/cheang/server_ws/devel/.private/kinova_description/share/kinova_description/cmake/kinova_descriptionConfig-version.cmake /home/cheang/server_ws/devel/share/kinova_description/cmake/kinova_descriptionConfig-version.cmake
+/home/cheang/server_ws/devel/.private/kinova_description/share/kinova_description/cmake/kinova_descriptionConfig.cmake /home/cheang/server_ws/devel/share/kinova_description/cmake/kinova_descriptionConfig.cmake
+/home/cheang/server_ws/devel/.private/kinova_description/lib/pkgconfig/kinova_description.pc /home/cheang/server_ws/devel/lib/pkgconfig/kinova_description.pc

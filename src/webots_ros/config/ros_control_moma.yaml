@@ -1,0 +1,310 @@
+gripper_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+    - j2s6s200_joint_finger_1
+    - j2s6s200_joint_finger_2
+
+gripper_velocity_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints:
+    - j2s6s200_joint_finger_1
+    - j2s6s200_joint_finger_2
+
+pantilt_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+    - JT_Pantilt_PanLink
+    - JT_Pantilt_TiltLink
+
+pantilt_velocity_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints:
+    - JT_Pantilt_PanLink
+    - JT_Pantilt_TiltLink
+
+armbase_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+    - JT_ArmBase
+
+armbase_velocity_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints:
+    - JT_ArmBase
+
+arm_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+    - j2s6s200_joint_1
+    - j2s6s200_joint_2
+    - j2s6s200_joint_3
+    - j2s6s200_joint_4
+    - j2s6s200_joint_5
+    - j2s6s200_joint_6 
+
+arm_velocity_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints:
+    - j2s6s200_joint_1
+    - j2s6s200_joint_2
+    - j2s6s200_joint_3
+    - j2s6s200_joint_4
+    - j2s6s200_joint_5
+    - j2s6s200_joint_6 
+
+# arm_effort_controller:
+#   type: effort_controllers/JointGroupEffortController
+#   joints:
+#     - j2s6s200_joint_1
+#     - j2s6s200_joint_2
+#     - j2s6s200_joint_3
+#     - j2s6s200_joint_4
+#     - j2s6s200_joint_5
+#     - j2s6s200_joint_6
+
+position_gripper_trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - j2s6s200_joint_finger_1
+    - j2s6s200_joint_finger_2
+  constraints:
+    stopped_velocity_tolerance: 1
+
+velocity_gripper_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryController 
+  constraints:
+    goal_time: 1.0
+    j2s6s200_joint_finger_1:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_finger_2:
+      goal: 0.02
+      trajectory: 0.05
+    stopped_velocity_tolerance: 0.02
+  gains:
+    j2s6s200_joint_finger_1:
+      d: 0
+      i: 0
+      i_clamp: 1
+      p: 10
+    j2s6s200_joint_finger_2:
+      d: 0
+      i: 0
+      i_clamp: 1
+      p: 10
+  joints:
+  - j2s6s200_joint_finger_1
+  - j2s6s200_joint_finger_2
+
+position_pantilt_trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - JT_Pantilt_PanLink
+    - JT_Pantilt_TiltLink
+  constraints:
+    stopped_velocity_tolerance: 1
+
+velocity_pantilt_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryController 
+  constraints:
+    goal_time: 1.0
+    JT_Pantilt_PanLink:
+      goal: 0.02
+      trajectory: 0.05
+    JT_Pantilt_TiltLink:
+      goal: 0.02
+      trajectory: 0.05
+    stopped_velocity_tolerance: 0.02
+  gains:
+    JT_Pantilt_PanLink:
+      d: 0
+      i: 0
+      i_clamp: 1
+      p: 10
+    JT_Pantilt_TiltLink:
+      d: 0
+      i: 0
+      i_clamp: 1
+      p: 10
+  joints:
+  - JT_Pantilt_PanLink
+  - JT_Pantilt_TiltLink
+
+position_armbase_trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - JT_ArmBase
+  constraints:
+    stopped_velocity_tolerance: 1
+
+velocity_armbase_trajectory_controller:
+  type: velocity_controllers/JointTrajectoryControl ler 
+  constraints:
+    goal_time: 1.0
+    JT_ArmBase:
+      goal: 0.02
+      trajectory: 0.05
+    stopped_velocity_tolerance: 0.02
+  gains:
+    JT_ArmBase:
+      d: 0
+      i: 0
+      i_clamp: 1
+      p: 10
+  joints:
+  - JT_ArmBase
+
+position_arm_trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - j2s6s200_joint_1
+    - j2s6s200_joint_2
+    - j2s6s200_joint_3
+    - j2s6s200_joint_4
+    - j2s6s200_joint_5
+    - j2s6s200_joint_6
+  constraints:
+    stopped_velocity_tolerance: 1
+
+velocity_arm_trajectory_controller:
+  type: "velocity_controllers/JointTrajectoryController"
+  joints:
+    - j2s6s200_joint_1
+    - j2s6s200_joint_2
+    - j2s6s200_joint_3
+    - j2s6s200_joint_4
+    - j2s6s200_joint_5
+    - j2s6s200_joint_6
+  gains: # Required because we're controlling a velocity interface
+    j2s6s200_joint_1: {p: 10,  d: 1, i: 1, i_clamp: 1}
+    j2s6s200_joint_2: {p: 10,  d: 1, i: 1, i_clamp: 1}
+    j2s6s200_joint_3: {p: 10,  d: 1, i: 1, i_clamp: 1}
+    j2s6s200_joint_4: {p: 10,  d: 1, i: 1, i_clamp: 1}
+    j2s6s200_joint_5: {p: 10,  d: 1, i: 1, i_clamp: 1}
+    j2s6s200_joint_6: {p: 10,  d: 1, i: 1, i_clamp: 1}
+  velocity_ff:
+    j2s6s200_joint_1: 1.0
+    j2s6s200_joint_2: 1.0
+    j2s6s200_joint_3: 1.0
+    j2s6s200_joint_4: 1.0
+    j2s6s200_joint_5: 1.0
+    j2s6s200_joint_6: 1.0 
+
+effort_arm_trajectory_controller:
+  type: effort_controllers/JointTrajectoryController
+  constraints:
+    goal_time: 1.0
+    j2s6s200_joint_1:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_2:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_3:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_4:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_5:
+      goal: 0.02
+      trajectory: 0.05
+    j2s6s200_joint_6:
+      goal: 0.02
+      trajectory: 0.05
+    stopped_velocity_tolerance: 0.02
+  gains:
+    j2s6s200_joint_1:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 5000
+    j2s6s200_joint_2:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 5000
+    j2s6s200_joint_3:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 5000
+    j2s6s200_joint_4:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 500
+    j2s6s200_joint_5:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 200
+    j2s6s200_joint_6:
+      d: 0
+      i: 0
+      i_clamp: 10
+      p: 500
+  joints:
+  - j2s6s200_joint_1
+  - j2s6s200_joint_2
+  - j2s6s200_joint_3
+  - j2s6s200_joint_4
+  - j2s6s200_joint_5
+  - j2s6s200_joint_6
+
+diff_drive_controller:
+  type: diff_drive_controller/DiffDriveController
+  left_wheel: JT_DriWheel_L
+  right_wheel: JT_DriWheel_R
+  publish_rate: 50
+  # These covariances are exactly what the real MiR platform publishes
+  pose_covariance_diagonal : [0.00001, 0.00001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+  twist_covariance_diagonal: [0.1, 0.1, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+  # enable_odom_tf: true
+  publish_cmd: false
+  velocity_rolling_window_size: 30
+  # Wheel separation and diameter. These are both optional.
+  # diff_drive_controller will attempt to read either one or both from the
+  # URDF if not specified as a parameter
+  wheel_separation : 0.40
+  wheel_radius : 0.084
+  # Wheel separation and radius multipliers
+  wheel_separation_multiplier: 1.0 # default: 1.0
+  wheel_radius_multiplier    : 1.0 # default: 1.0
+  # Velocity commands timeout [s], default 0.5
+  cmd_vel_timeout: 0.5
+  # frame_ids (same as real MiR platform)
+  base_frame_id: base_link      # default: base_link
+  odom_frame_id: odom           # default: odom
+  # Velocity and acceleration limits
+  # Whenever a min_* is unspecified, default to -max_*
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 0.8  # m/s; move_base max_vel_x: 0.8
+      has_acceleration_limits: true
+      max_acceleration       : 1.5  # m/s^2; move_base acc_lim_x: 1.5
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 1.0  # rad/s; move_base max_rot_vel: 1.0
+      has_acceleration_limits: true
+      max_acceleration       : 2.0  # rad/s^2; move_base acc_lim_th: 2.0
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  joints:
+    - JT_ArmBase
+    - JT_Pantilt_PanLink
+    - JT_Pantilt_TiltLink
+    - j2s6s200_joint_1
+    - j2s6s200_joint_2
+    - j2s6s200_joint_3
+    - j2s6s200_joint_4
+    - j2s6s200_joint_5
+    - j2s6s200_joint_6
+    - j2s6s200_joint_finger_1
+    - j2s6s200_joint_finger_tip_1
+    - j2s6s200_joint_finger_2
+    - j2s6s200_joint_finger_tip_2
+  publish_rate: 50

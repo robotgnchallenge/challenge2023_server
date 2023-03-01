@@ -1,0 +1,17 @@
+<launch>
+  <!-- <arg name="robot_urdf" value="minnav_moma_description.urdf"/> -->
+  <arg name="model_version" default="v2" />
+  <arg name="robot_type" default="j2s7s300" />
+  <arg name="robot_model" value="$(find minnav_moma_description)/urdf/$(arg model_version)/minnav_moma_$(arg robot_type)_xacro.xacro"/>
+
+  <arg name="gui" default="False" />
+
+  <!-- <param name="robot_description" textfile="" /> -->
+  <param name="robot_description" command="$(find xacro)/xacro $(arg robot_model)" /> />
+
+  <param name="use_gui" value="$(arg gui)" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find minnav_moma_description)/launch/display.rviz" />
+
+</launch>

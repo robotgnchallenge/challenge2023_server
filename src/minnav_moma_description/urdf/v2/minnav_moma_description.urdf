@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="minnav_moma_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0403860213344624 0.495490656840133 -0.0450666311162176"
+        rpy="0 0 0" />
+      <mass
+        value="9.01280280594588" />
+      <inertia
+        ixx="0.0895631286758285"
+        ixy="-0.00137199882894574"
+        ixz="0.00249100411054732"
+        iyy="0.0978432794810514"
+        iyz="-0.00016042295456057"
+        izz="0.0906256853508929" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="2DRadar">
+    <inertial>
+      <origin
+        xyz="3.81358176767821E-05 0.0168839488939112 5.55414041841784E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.141542870807911" />
+      <inertia
+        ixx="6.03570230255589E-05"
+        ixy="7.76468231305162E-08"
+        ixz="-2.37252352294725E-11"
+        iyy="9.22530105635559E-05"
+        iyz="-7.76258819389751E-12"
+        izz="6.05891194689322E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/2DRadar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/2DRadar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_2DRadar"
+    type="fixed">
+    <origin
+      xyz="0.03 -0.162 0.1775"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="2DRadar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="ArmBase">
+    <inertial>
+      <origin
+        xyz="-0.0212259398085508 -0.023220210965598 0.000303630377992841"
+        rpy="0 0 0" />
+      <mass
+        value="0.721940197442544" />
+      <inertia
+        ixx="0.00158920125791432"
+        ixy="-4.11141260832954E-05"
+        ixz="-8.76729740001719E-07"
+        iyy="0.000690426545178568"
+        iyz="-1.23499539645942E-06"
+        izz="0.00117650013078168" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/ArmBase.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/ArmBase.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_ArmBase"
+    type="prismatic">
+    <origin
+      xyz="0.1056 0.0175 0.3925"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="ArmBase" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.3"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="UniWheelBase_LB">
+    <inertial>
+      <origin
+        xyz="0.0182260960322877 5.55111512312578E-17 -0.029270899984493"
+        rpy="0 0 0" />
+      <mass
+        value="0.0847351495375796" />
+      <inertia
+        ixx="3.49474283390519E-05"
+        ixy="3.11041504027681E-20"
+        ixz="-1.16340041790673E-05"
+        iyy="6.07135705376021E-05"
+        iyz="1.30363335304502E-20"
+        izz="3.34756139191196E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_LB.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_LB.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheelBase_LB"
+    type="continuous">
+    <origin
+      xyz="0.1735 0.25 0.0295"
+      rpy="3.1416 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="UniWheelBase_LB" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="UniWheel_LB">
+    <inertial>
+      <origin
+        xyz="1.35288199670791E-08 3.81426298878829E-08 -2.32971358038458E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.131455385710739" />
+      <inertia
+        ixx="8.23652797722568E-05"
+        ixy="-4.32851042767412E-11"
+        ixz="-1.47949297594817E-05"
+        iyy="4.67613870209975E-05"
+        iyz="-2.809067591878E-11"
+        izz="5.29115412162832E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_LB.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_LB.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheel_LB"
+    type="continuous">
+    <origin
+      xyz="0.024 0 -0.016"
+      rpy="-2.2739 0.26249 1.8679" />
+    <parent
+      link="UniWheelBase_LB" />
+    <child
+      link="UniWheel_LB" />
+    <axis
+      xyz="0.92344 0 -0.38375" />
+  </joint>
+  <link
+    name="UniWheelBase_RB">
+    <inertial>
+      <origin
+        xyz="0.0182260960322876 1.38777878078145E-17 -0.029270899984493"
+        rpy="0 0 0" />
+      <mass
+        value="0.0847351495375795" />
+      <inertia
+        ixx="3.49474283390518E-05"
+        ixy="3.02345328211204E-20"
+        ixz="-1.16340041790673E-05"
+        iyy="6.0713570537602E-05"
+        iyz="6.28812266231557E-21"
+        izz="3.34756139191195E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_RB.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_RB.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheelBase_RB"
+    type="continuous">
+    <origin
+      xyz="-0.1135 0.25 0.0295"
+      rpy="3.1416 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="UniWheelBase_RB" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="UniWheel_RB">
+    <inertial>
+      <origin
+        xyz="1.35288200087125E-08 3.81426298948218E-08 -2.32971358038458E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.131455385710739" />
+      <inertia
+        ixx="8.23651467092563E-05"
+        ixy="-4.33611722537931E-11"
+        ixz="-1.47949693968671E-05"
+        iyy="4.67614248550018E-05"
+        iyz="-2.80592970201838E-11"
+        izz="5.29113308586732E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_RB.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_RB.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheel_RB"
+    type="continuous">
+    <origin
+      xyz="0.024 0 -0.016"
+      rpy="-1.583 0.0050581 -1.177" />
+    <parent
+      link="UniWheelBase_RB" />
+    <child
+      link="UniWheel_RB" />
+    <axis
+      xyz="0.92344 0 -0.38375" />
+  </joint>
+  <link
+    name="UniWheelBase_RF">
+    <inertial>
+      <origin
+        xyz="0.0182260960322877 2.77555756156289E-17 -0.029270899984493"
+        rpy="0 0 0" />
+      <mass
+        value="0.0847351495375796" />
+      <inertia
+        ixx="3.4947428339052E-05"
+        ixy="3.8797981127707E-20"
+        ixz="-1.16340041790674E-05"
+        iyy="6.07135705376022E-05"
+        iyz="2.01517494285717E-20"
+        izz="3.34756139191196E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_RF.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_RF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheelBase_RF"
+    type="continuous">
+    <origin
+      xyz="-0.1135 -0.15 0.0295"
+      rpy="3.1416 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="UniWheelBase_RF" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="UniWheel_RF">
+    <inertial>
+      <origin
+        xyz="1.3529E-08 3.8143E-08 -2.3297E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.13146" />
+      <inertia
+        ixx="8.2365E-05"
+        ixy="-4.3361E-11"
+        ixz="-1.4795E-05"
+        iyy="4.6761E-05"
+        iyz="-2.8059E-11"
+        izz="5.2911E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_RF.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_RF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheel_RF"
+    type="continuous">
+    <origin
+      xyz="0.024 0 -0.016"
+      rpy="1.7124 0.058584 1.1811" />
+    <parent
+      link="UniWheelBase_RF" />
+    <child
+      link="UniWheel_RF" />
+    <axis
+      xyz="0.92344 0 -0.38375" />
+  </joint>
+  <link
+    name="UniWheelBase_LF">
+    <inertial>
+      <origin
+        xyz="0.018226 2.7756E-17 -0.029271"
+        rpy="0 0 0" />
+      <mass
+        value="0.084735" />
+      <inertia
+        ixx="3.4947E-05"
+        ixy="2.3781E-20"
+        ixz="-1.1634E-05"
+        iyy="6.0714E-05"
+        iyz="5.1696E-21"
+        izz="3.3476E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_LF.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheelBase_LF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheelBase_LF"
+    type="continuous">
+    <origin
+      xyz="0.1735 -0.15 0.0295"
+      rpy="3.1416 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="UniWheelBase_LF" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="UniWheel_LF">
+    <inertial>
+      <origin
+        xyz="1.35288200919792E-08 3.81426298740051E-08 -2.32971358697653E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.131455385710739" />
+      <inertia
+        ixx="8.23651467092563E-05"
+        ixy="-4.3361172422088E-11"
+        ixz="-1.4794969396867E-05"
+        iyy="4.67614248550019E-05"
+        iyz="-2.80592969555975E-11"
+        izz="5.29113308586733E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_LF.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/UniWheel_LF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_UniWheel_LF"
+    type="continuous">
+    <origin
+      xyz="0.024 0 -0.016"
+      rpy="-0.26903 -0.38104 -1.4686" />
+    <parent
+      link="UniWheelBase_LF" />
+    <child
+      link="UniWheel_LF" />
+    <axis
+      xyz="0.92344 0 -0.38375" />
+  </joint>
+  <link
+    name="3DRadar">
+    <inertial>
+      <origin
+        xyz="-0.0312266646279417 0.0638299736845729 0.030856917757328"
+        rpy="0 0 0" />
+      <mass
+        value="0.373601927474611" />
+      <inertia
+        ixx="0.000357539432888909"
+        ixy="-9.66418226965086E-07"
+        ixz="1.25802730916535E-06"
+        iyy="0.000355400987826577"
+        iyz="-2.25204460081374E-06"
+        izz="0.000211286197089302" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/3DRadar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/3DRadar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_3DRadar"
+    type="fixed">
+    <origin
+      xyz="-0.0428 0.1215 1.151"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="3DRadar" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="1.5708"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PanTiltLink1">
+    <inertial>
+      <origin
+        xyz="-9.0205620750794E-17 -1.11022302462516E-16 0.0224194936251991"
+        rpy="0 0 0" />
+      <mass
+        value="0.125638006386442" />
+      <inertia
+        ixx="5.79840369760146E-05"
+        ixy="-4.95095366983696E-09"
+        ixz="-3.21800172164819E-19"
+        iyy="0.000158965664023198"
+        iyz="1.743720061968E-19"
+        izz="0.000150893790612493" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/PanTiltLink1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/PanTiltLink1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_PanTiltLink1"
+    type="continuous">
+    <origin
+      xyz="0.13829 0.016999 1.096"
+      rpy="0 0 -1.5728" />
+    <parent
+      link="base_link" />
+    <child
+      link="PanTiltLink1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Head">
+    <inertial>
+      <origin
+        xyz="0.0224674869394891 0.0695919460280914 -0.000468505805934716"
+        rpy="0 0 0" />
+      <mass
+        value="0.439963150821872" />
+      <inertia
+        ixx="0.00198672347014929"
+        ixy="-2.94408444443986E-05"
+        ixz="-2.3716206290341E-05"
+        iyy="0.00189110646012411"
+        iyz="5.58767321757651E-07"
+        izz="0.000643590634817323" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/Head.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/Head.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_Head"
+    type="continuous">
+    <origin
+      xyz="0 0.00025 0.0413"
+      rpy="1.569 0.10185 1.5532" />
+    <parent
+      link="PanTiltLink1" />
+    <child
+      link="Head" />
+    <axis
+      xyz="0.017543 0 0.99985" />
+  </joint>
+  <link
+    name="DriWheel_R">
+    <inertial>
+      <origin
+        xyz="-0.0321053610565765 3.29003335686195E-09 -1.46693610869608E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.548950056836036" />
+      <inertia
+        ixx="0.00101586976403569"
+        ixy="2.45906729414143E-09"
+        ixz="-1.34581039060865E-09"
+        iyy="0.000590516714896425"
+        iyz="8.02668537415636E-09"
+        izz="0.000590534517501471" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/DriWheel_R.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/DriWheel_R.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_DriWheel_R"
+    type="continuous">
+    <origin
+      xyz="-0.1419 0.05 0.086"
+      rpy="1.9847 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="DriWheel_R" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="DriWheel_L">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/DriWheel_L.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://minnav_moma_description/meshes/v2/DriWheel_L.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="JT_DriWheel_L"
+    type="continuous">
+    <origin
+      xyz="0.2019 0.05 0.086"
+      rpy="1.4543 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="DriWheel_L" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

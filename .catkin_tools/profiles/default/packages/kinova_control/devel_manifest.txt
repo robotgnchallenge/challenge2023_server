@@ -1,0 +1,5 @@
+kinova-ros/kinova_control
+/home/cheang/server_ws/devel/.private/kinova_control/cmake.lock /home/cheang/server_ws/devel/./cmake.lock
+/home/cheang/server_ws/devel/.private/kinova_control/share/kinova_control/cmake/kinova_controlConfig-version.cmake /home/cheang/server_ws/devel/share/kinova_control/cmake/kinova_controlConfig-version.cmake
+/home/cheang/server_ws/devel/.private/kinova_control/share/kinova_control/cmake/kinova_controlConfig.cmake /home/cheang/server_ws/devel/share/kinova_control/cmake/kinova_controlConfig.cmake
+/home/cheang/server_ws/devel/.private/kinova_control/lib/pkgconfig/kinova_control.pc /home/cheang/server_ws/devel/lib/pkgconfig/kinova_control.pc

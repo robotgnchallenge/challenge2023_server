@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default="MirKinova"/>
+  <node pkg="webots_ros" type="ros_camera_info" name="ros_camera_info_depth_camera" 
+    args="$(arg robot_name) 320 190 2.05949">
+    <remap from="image_rect" to="/$(arg robot_name)/depth_camera/range_image"/>
+    <remap from="camera_info" to="/$(arg robot_name)/depth_camera/camera_info"/>
+  </node>
+
+  <node pkg="webots_ros" type="ros_camera_info" name="ros_camera_info_kinect_color" 
+    args="$(arg robot_name) 640 480 1.0">
+    <remap from="image_rect" to="/$(arg robot_name)/kinect_color/image"/>
+    <remap from="camera_info" to="/$(arg robot_name)/kinect_color/camera_info"/>
+  </node>
+
+  <node pkg="webots_ros" type="ros_camera_info" name="ros_camera_info_kinect_range" 
+    args="$(arg robot_name) 640 480 1.0">
+    <remap from="image_rect" to="/$(arg robot_name)/kinect_range/range_image"/>
+    <remap from="camera_info" to="/$(arg robot_name)/kinect_range/camera_info"/>
+  </node>
+
+  <node pkg="webots_ros" type="ros_camera_info" name="ros_camera_info_hand_camera" 
+    args="$(arg robot_name) 640 480 1.0">
+    <remap from="image_rect" to="/$(arg robot_name)/hand_camera/image"/>
+    <remap from="camera_info" to="/$(arg robot_name)/hand_camera/camera_info"/>
+  </node>
+
+  <node pkg="webots_ros" type="ros_camera_info" name="ros_camera_info_hand_depth" 
+    args="$(arg robot_name) 640 480 1.0">
+    <remap from="image_rect" to="/$(arg robot_name)/hand_depth/range_image"/>
+    <remap from="camera_info" to="/$(arg robot_name)/hand_depth/camera_info"/>
+  </node>
+
+
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" />
+  <node pkg="nodelet" type="nodelet" name="nodelet_depth_camera"
+        args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+    <remap from="camera_info" to="/$(arg robot_name)/depth_camera/camera_info"/>
+    <remap from="image_rect" to="/$(arg robot_name)/depth_camera/range_image"/>
+    <remap from="points" to="/$(arg robot_name)/depth_camera/points"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="nodelet_kinect_range"
+        args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+    <remap from="camera_info" to="/$(arg robot_name)/kinect_range/camera_info"/>
+    <remap from="image_rect" to="/$(arg robot_name)/kinect_range/range_image"/>
+    <remap from="points" to="/$(arg robot_name)/kinect_range/points"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="nodelet_hand_depth"
+        args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+    <remap from="camera_info" to="/$(arg robot_name)/hand_depth/camera_info"/>
+    <remap from="image_rect" to="/$(arg robot_name)/hand_depth/range_image"/>
+    <remap from="points" to="/$(arg robot_name)/hand_depth/points"/>
+  </node>
+</launch>

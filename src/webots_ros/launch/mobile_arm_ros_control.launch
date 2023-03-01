@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default="MirKinova"/>
+  <arg name="localization"  default="supervisor"/>
+  <arg name="planning"  default="wbc"/>
+  <arg name="rviz"  default="false"/>
+  <arg name ="mobile_base" default="Moma"/>
+  <!-- robot_description -->
+  <!-- <param name="robot_description" textfile="$(find webots_ros)/urdf/MirKinova.urdf"/>-->
+  <group if="$(eval mobile_base == 'Mir')">
+    <param name="robot_description" textfile="$(find webots_ros)/urdf/MirKinova.urdf"/>
+  </group>
+  <group if="$(eval mobile_base == 'Moma')">
+    <param name="robot_description" textfile="$(find webots_ros)/urdf/Moma.urdf"/>
+  </group>
+
+  <!-- The urdf of Mir100 exported from webots has rotation bug, so fix them here -->
+  <node pkg="tf" type="static_transform_publisher" name="convert_lidar"
+    args="0 0 0 0 0 3.1415926 front_lidar MirKinova/front_lidar 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_lidar_1"
+    args="0 0 0 3.14 0 -1.57 LIDAR MirKinova/LIDAR 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_depth"
+    args="0 0 0 1.5707963 3.1415926 1.5707963 depth_camera MirKinova/depth_camera 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_kinect_color"
+    args="0 0 0 1.5707963 3.1415926 1.5707963 kinect_color MirKinova/kinect_color 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_kinect_range"
+    args="0 0 0 1.5707963 3.1415926 1.5707963 kinect_range MirKinova/kinect_range 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_hand_camera"
+    args="0 0 0 1.5707963 3.1415926 1.5707963 hand_camera MirKinova/hand_camera 50" />
+  <node pkg="tf" type="static_transform_publisher" name="convert_hand_depth"
+    args="0 0 0 1.5707963 3.1415926 1.5707963 hand_depth MirKinova/hand_depth 100" />
+
+  <!-- no localization -->
+  <group if="$(eval localization == 'none')">
+    <rosparam>
+      diff_drive_controller:
+        enable_odom_tf: true
+    </rosparam>
+    <!-- <node pkg="tf" type="static_transform_publisher" name="world2map"
+        args="0 0 0 0 0 0 world map 100" />  -->
+    <!-- <node pkg="tf" type="static_transform_publisher" name="map2odom"
+        args="0 0 0 0 0 0 map odom 100" /> -->
+  </group>
+  <!-- supervisor -->
+  <group if="$(eval localization == 'supervisor')">
+    <rosparam>
+      diff_drive_controller:
+        enable_odom_tf: false
+    </rosparam>
+    <node pkg="webots_ros" type="ros_localization" name="ros_localization" args="$(arg robot_name)" output="log">
+    </node>
+  </group>
+  <!-- gmapping -->
+  <group if="$(eval localization == 'gmapping')">
+    <rosparam>
+      diff_drive_controller:
+        enable_odom_tf: true
+    </rosparam>
+    <node pkg="tf" type="static_transform_publisher" name="world2map"
+        args="0 0 0 0 0 0 world map 100" /> 
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping_node" respawn="false" output="log">
+      <remap from="/scan" to="/MirKinova/LIDAR/laser_scan_filter"/>
+      <rosparam file="$(find webots_ros)/config/gmapping.yaml" command="load" />
+    </node>
+  </group>
+
+  <!-- ros_control param -->
+  <!--<rosparam file="$(find webots_ros)/config/ros_control.yaml" command="load"/>-->
+  <group if="$(eval mobile_base == 'Mir')">
+    <rosparam file="$(find webots_ros)/config/ros_control.yaml" command="load"/>
+  </group>
+  <group if="$(eval mobile_base == 'Moma')">
+    <rosparam file="$(find webots_ros)/config/ros_control_moma.yaml" command="load"/>
+  </group>
+  <group if="$(eval planning == 'wbc')">
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="true" 
+          output="screen"
+          args="gripper_position_controller
+                arm_velocity_controller
+                diff_drive_controller
+                joint_state_controller" />
+  </group>
+  <group if="$(eval planning == 'moveit')">
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="true" 
+          output="screen"
+          args="position_gripper_trajectory_controller
+                position_arm_trajectory_controller
+                diff_drive_controller
+                joint_state_controller
+                position_armbase_trajectory_controller
+                position_pantilt_trajectory_controller
+                " />
+  </group>
+
+  <!-- robot_state_publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" respawn="true" respawn_delay="5" output="screen" />
+100
+  <group if="$(arg rviz)">
+    <arg name="debug" default="false" />
+    <arg unless="$(arg debug)" name="launch_prefix" value="" />
+    <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+    <arg name="rviz_config" default="$(find webots_ros)/rviz/mobile_arm.rviz" />
+    <arg     if="$(eval rviz_config=='')" name="command_args" value="" />
+    <arg unless="$(eval rviz_config=='')" name="command_args" value="-d $(arg rviz_config)" />
+    <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
+        args="$(arg command_args)" output="screen">
+    </node>
+  </group>
+
+</launch>

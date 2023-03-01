@@ -1,0 +1,101 @@
+
+<launch>
+  <master auto="start"/>
+  <arg name="robot_name" default="MirKinova"/>
+  <arg name="rviz"  default="true"/>
+  <arg name="init_x" default="1.72"  />
+  <arg name="init_y" default="-0.17"  />
+  <arg name="init_a" default="-0.3863461"/>
+  <arg name="map_path" default ="$(find webots_ros)/config/map/3.yaml" />
+  <!-- <arg name="laser_topic" default="/MirKinova/front_lidar/laser_scan_filter"/> -->
+  <arg name="mobile_base" default="Mir"/>
+  <!-- <arg name="config_folder" default="base"/> -->
+  <arg name="true_false" default="false"/> 
+  <arg name="laser_topic" default="/MirKinova/front_lidar/laser_scan_filter" unless="$(arg true_false)"/>
+  <arg name="laser_topic" value="/MirKinova/LIDAR/laser_scan_filter" if="$(arg true_false)"/>
+  <arg name="config_folder" default="base" unless="$(arg true_false)" />
+  <arg name="config_folder" value="base_moma" if="$(arg true_false)"/>
+
+
+  <!-- 打开webots -->
+  <!-- <include file="$(find webots_ros)/launch/webots.launch" /> -->
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)"/>
+  
+  <!-- 打开rviz -->
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find webots_ros)/rviz/robot_gmapping.rviz"/>
+  </group>
+  <!--- Run AMCL -->
+  <!-- <include file="$(find amcl)/examples/amcl_diff.launch" /> -->
+
+  <!-- amcl定位-->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="$(arg laser_topic)"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="odom_model_type" value="diff-corrected"/>
+    <param name="base_frame_id" value="base_link"/>
+    <param name="global_frame_id" value="map"/>
+    
+    <param name="initial_pose_x"            value="$(arg init_x)"/>
+		<param name="initial_pose_y"            value="$(arg init_y)"/>
+		<param name="initial_pose_a"            value="$(arg init_a)"/>
+    <!--transform tolerance-->
+    <param name="transform_tolerance" value="0.9"/>
+    
+    <!--overall filter-->
+    <param name="min_particles" value="20"/>
+    <param name="max_particles" value="400"/>
+    <!-- <param name="initial_pose_x" value="1.127"/>
+    <param name="initial_pose_y" value="-0.045"/> -->
+    <param name="updata_min_a" value="0.1"/>
+    <param name="update_min_d" value="0.25"/>
+    
+    <!--likelihood_field of laser 25-->
+    <param name="laser_min_range" value="1.0"/>
+    <param name="laser_max_range" value="15"/>
+    <param name="laser_max_beams" value="30"/>
+    <param name="laser_z_hit" value="0.95"/>
+    <param name="laser_z_rand" value="0.05"/>
+    
+    <!--Odometry-->
+    <param name="odom_model_type" value="diff"/>
+    <param name="odom_alpha1" value="0.2"/>
+    <param name="odom_alpha2" value="0.2"/>
+    <param name="odom_alpha3" value="0.2"/>
+    <param name="odom_alpha4" value="0.2"/>
+  </node>
+
+  <!-- move_base 导航 -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find webots_ros)/config/navigation_configure/$(arg config_folder)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find webots_ros)/config/navigation_configure/$(arg config_folder)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find webots_ros)/config/navigation_configure/$(arg config_folder)/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find webots_ros)/config/navigation_configure/$(arg config_folder)/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find hybrid_mpc_local_planner)/cfg/hybrid_mpc_local_planner_params.yaml" command="load" />
+    <!-- <rosparam file="$(find webots_ros)/config/navigation_configure/base/base_local_planner_params.yaml" command="load" /> -->
+    <!-- <rosparam file="/home/robot/workspaces/cakin_ws/src/webots_sim/config/navigation_configure/teb/diff_drive/teb_local_planner_params.yaml" command="load" /> -->
+    <remap from="cmd_vel" to="/diff_drive_controller/cmd_vel"/>
+    <remap from="odom" to="odom"/>
+    
+    <remap from="scan" to="$(arg laser_topic)"/>
+
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="hybrid_mpc_local_planner/MPCLocalPlannerPlugin" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+  </node>
+
+  <node pkg="hybrid_mpc_local_planner" type="mpc_planner_server.py" name="mpc_planner_server_py">
+    <remap from="cmd_vel" to="/diff_drive_controller/cmd_vel"/>
+    <remap from="scan" to="$(arg laser_topic)"/>
+  </node>
+
+
+      <!-- 清扫路径规划器 -->
+    <!-- <node pkg="clean_robot" type="path_planning_node" respawn="false" name="path_planning_node" output="screen" clear_params="true">
+        <rosparam file="$(find webots_ros)/config/navigation_configure/costmap_common_params.yaml" command="load"  />
+        <rosparam file="$(find webots_ros)/config/navigation_configure/global_costmap_params.yaml" command="load" />
+    </node> -->
+
+</launch>

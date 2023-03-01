@@ -1,0 +1,50 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"2DRadar" [label="2DRadar"];
+"3DRadar" [label="3DRadar"];
+"ArmBase" [label="ArmBase"];
+"DriWheel_L" [label="DriWheel_L"];
+"DriWheel_R" [label="DriWheel_R"];
+"PanTiltLink1" [label="PanTiltLink1"];
+"Head" [label="Head"];
+"UniWheelBase_LB" [label="UniWheelBase_LB"];
+"UniWheel_LB" [label="UniWheel_LB"];
+"UniWheelBase_LF" [label="UniWheelBase_LF"];
+"UniWheel_LF" [label="UniWheel_LF"];
+"UniWheelBase_RB" [label="UniWheelBase_RB"];
+"UniWheel_RB" [label="UniWheel_RB"];
+"UniWheelBase_RF" [label="UniWheelBase_RF"];
+"UniWheel_RF" [label="UniWheel_RF"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "JT_2DRadar" [label="xyz: 0.03 -0.162 0.1775 \nrpy: 1.5708 -0 1.5708"]
+"JT_2DRadar" -> "2DRadar"
+"base_link" -> "JT_3DRadar" [label="xyz: -0.0428 0.1215 1.151 \nrpy: 1.5708 -0 0"]
+"JT_3DRadar" -> "3DRadar"
+"base_link" -> "JT_ArmBase" [label="xyz: 0.1056 0.0175 0.3925 \nrpy: 1.5708 -0 0"]
+"JT_ArmBase" -> "ArmBase"
+"base_link" -> "JT_DriWheel_L" [label="xyz: 0.2019 0.05 0.086 \nrpy: 1.4543 -0 0"]
+"JT_DriWheel_L" -> "DriWheel_L"
+"base_link" -> "JT_DriWheel_R" [label="xyz: -0.1419 0.05 0.086 \nrpy: 1.9847 -0 0"]
+"JT_DriWheel_R" -> "DriWheel_R"
+"base_link" -> "JT_PanTiltLink1" [label="xyz: 0.13829 0.016999 1.096 \nrpy: 0 0 -1.5728"]
+"JT_PanTiltLink1" -> "PanTiltLink1"
+"PanTiltLink1" -> "JT_Head" [label="xyz: 0 0.00025 0.0413 \nrpy: 1.569 0.10185 1.5532"]
+"JT_Head" -> "Head"
+"base_link" -> "JT_UniWheelBase_LB" [label="xyz: 0.1735 0.25 0.0295 \nrpy: -3.14159 -4.23516e-22 1.5708"]
+"JT_UniWheelBase_LB" -> "UniWheelBase_LB"
+"UniWheelBase_LB" -> "JT_UniWheel_LB" [label="xyz: 0.024 0 -0.016 \nrpy: -2.2739 0.26249 1.8679"]
+"JT_UniWheel_LB" -> "UniWheel_LB"
+"base_link" -> "JT_UniWheelBase_LF" [label="xyz: 0.1735 -0.15 0.0295 \nrpy: -3.14159 -4.23516e-22 1.5708"]
+"JT_UniWheelBase_LF" -> "UniWheelBase_LF"
+"UniWheelBase_LF" -> "JT_UniWheel_LF" [label="xyz: 0.024 0 -0.016 \nrpy: -0.26903 -0.38104 -1.4686"]
+"JT_UniWheel_LF" -> "UniWheel_LF"
+"base_link" -> "JT_UniWheelBase_RB" [label="xyz: -0.1135 0.25 0.0295 \nrpy: -3.14159 -4.23516e-22 1.5708"]
+"JT_UniWheelBase_RB" -> "UniWheelBase_RB"
+"UniWheelBase_RB" -> "JT_UniWheel_RB" [label="xyz: 0.024 0 -0.016 \nrpy: -1.583 0.0050581 -1.177"]
+"JT_UniWheel_RB" -> "UniWheel_RB"
+"base_link" -> "JT_UniWheelBase_RF" [label="xyz: -0.1135 -0.15 0.0295 \nrpy: -3.14159 -4.23516e-22 1.5708"]
+"JT_UniWheelBase_RF" -> "UniWheelBase_RF"
+"UniWheelBase_RF" -> "JT_UniWheel_RF" [label="xyz: 0.024 0 -0.016 \nrpy: 1.7124 0.058584 1.1811"]
+"JT_UniWheel_RF" -> "UniWheel_RF"
+}

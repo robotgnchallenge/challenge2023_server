@@ -1,0 +1,829 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /MotionPlanning1
+        - /TF1/Frames1
+        - /TF1/Tree1
+      Splitter Ratio: 0.6136820912361145
+    Tree Height: 865
+  - Class: rviz/Help
+    Name: Help
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Acceleration_Scaling_Factor: 1
+      Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: false
+      Move Group Namespace: ""
+      MoveIt_Allow_Approximate_IK: true
+      MoveIt_Allow_External_Program: false
+      MoveIt_Allow_Replanning: false
+      MoveIt_Allow_Sensor_Positioning: false
+      MoveIt_Planning_Attempts: 10
+      MoveIt_Planning_Time: 5
+      MoveIt_Use_Cartesian_Path: false
+      MoveIt_Use_Constraint_Aware_IK: false
+      MoveIt_Workspace:
+        Center:
+          X: 0
+          Y: 0
+          Z: 0
+        Size:
+          X: 2
+          Y: 2
+          Z: 2
+      Name: MotionPlanning
+      Planned Path:
+        Color Enabled: false
+        Interrupt Display: false
+        Links:
+          All Links Enabled: true
+          ArmBase:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          DriWheel_L:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          DriWheel_R:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Head:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LIDAR:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Link Tree Style: Links in Alphabetic Order
+          Pantilt_PanLink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Pantilt_TiltLink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniWheel_LF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_LB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_LF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_RB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_RF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_LB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_RB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_RF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_depth:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_accelerometer:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_compass:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_gyro:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          j2s6s200_end_effector:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          j2s6s200_link_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_4:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_tip_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_tip_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          kinect_color:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          kinect_range:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          moma_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Loop Animation: false
+        Robot Alpha: 0.5
+        Robot Color: 150; 50; 150
+        Show Robot Collision: false
+        Show Robot Visual: true
+        Show Trail: false
+        State Display Time: 0.05 s
+        Trail Step Size: 1
+        Trajectory Topic: move_group/display_planned_path
+        Use Sim Time: false
+      Planning Metrics:
+        Payload: 1
+        Show Joint Torques: false
+        Show Manipulability: false
+        Show Manipulability Index: false
+        Show Weight Limit: false
+        TextHeight: 0.07999999821186066
+      Planning Request:
+        Colliding Link Color: 255; 0; 0
+        Goal State Alpha: 1
+        Goal State Color: 250; 128; 0
+        Interactive Marker Size: 0
+        Joint Violation Color: 255; 0; 255
+        Planning Group: arm
+        Query Goal State: true
+        Query Start State: false
+        Show Workspace: false
+        Start State Alpha: 1
+        Start State Color: 0; 255; 0
+      Planning Scene Topic: move_group/monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 1
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.20000000298023224
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: true
+          ArmBase:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          DriWheel_L:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          DriWheel_R:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Head:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LIDAR:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Link Tree Style: Links in Alphabetic Order
+          Pantilt_PanLink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Pantilt_TiltLink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniWheel_LF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_LB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_LF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_RB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          UniwheelPivot_RF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_LB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_RB:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          Uniwheel_RF:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_camera:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          hand_depth:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_accelerometer:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_compass:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          imu_data_gyro:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          j2s6s200_end_effector:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          j2s6s200_link_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_4:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_base:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_tip_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          j2s6s200_link_finger_tip_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          kinect_color:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          kinect_range:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          moma_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Robot Alpha: 0.5
+        Show Robot Collision: false
+        Show Robot Visual: true
+      Value: false
+      Velocity_Scaling_Factor: 1
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        ArmBase:
+          Value: false
+        DriWheel_L:
+          Value: false
+        DriWheel_R:
+          Value: false
+        Head:
+          Value: false
+        LIDAR:
+          Value: false
+        MirKinova/LIDAR:
+          Value: false
+        MirKinova/depth_camera:
+          Value: false
+        MirKinova/front_lidar:
+          Value: false
+        MirKinova/hand_camera:
+          Value: false
+        MirKinova/hand_depth:
+          Value: false
+        MirKinova/kinect_color:
+          Value: false
+        MirKinova/kinect_range:
+          Value: false
+        Pantilt_PanLink:
+          Value: false
+        Pantilt_TiltLink:
+          Value: false
+        UniWheel_LF:
+          Value: false
+        UniwheelPivot_LB:
+          Value: false
+        UniwheelPivot_LF:
+          Value: false
+        UniwheelPivot_RB:
+          Value: false
+        UniwheelPivot_RF:
+          Value: false
+        Uniwheel_LB:
+          Value: false
+        Uniwheel_RB:
+          Value: false
+        Uniwheel_RF:
+          Value: false
+        base_link:
+          Value: true
+        depth_camera:
+          Value: false
+        front_lidar:
+          Value: false
+        hand_camera:
+          Value: false
+        hand_depth:
+          Value: false
+        imu_data_accelerometer:
+          Value: false
+        imu_data_compass:
+          Value: false
+        imu_data_gyro:
+          Value: false
+        j2s6s200_end_effector:
+          Value: false
+        j2s6s200_link_1:
+          Value: false
+        j2s6s200_link_2:
+          Value: false
+        j2s6s200_link_3:
+          Value: false
+        j2s6s200_link_4:
+          Value: false
+        j2s6s200_link_5:
+          Value: false
+        j2s6s200_link_6:
+          Value: false
+        j2s6s200_link_base:
+          Value: false
+        j2s6s200_link_finger_1:
+          Value: false
+        j2s6s200_link_finger_2:
+          Value: false
+        j2s6s200_link_finger_tip_1:
+          Value: false
+        j2s6s200_link_finger_tip_2:
+          Value: false
+        kinect_color:
+          Value: false
+        kinect_range:
+          Value: false
+        map:
+          Value: false
+        moma_base_link:
+          Value: false
+        odom:
+          Value: false
+        world:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          map:
+            odom:
+              base_link:
+                imu_data_accelerometer:
+                  {}
+                imu_data_compass:
+                  {}
+                imu_data_gyro:
+                  {}
+                moma_base_link:
+                  ArmBase:
+                    j2s6s200_link_base:
+                      j2s6s200_link_1:
+                        j2s6s200_link_2:
+                          j2s6s200_link_3:
+                            j2s6s200_link_4:
+                              j2s6s200_link_5:
+                                j2s6s200_link_6:
+                                  hand_camera:
+                                    MirKinova/hand_camera:
+                                      {}
+                                  hand_depth:
+                                    MirKinova/hand_depth:
+                                      {}
+                                  j2s6s200_end_effector:
+                                    {}
+                                  j2s6s200_link_finger_1:
+                                    j2s6s200_link_finger_tip_1:
+                                      {}
+                                  j2s6s200_link_finger_2:
+                                    j2s6s200_link_finger_tip_2:
+                                      {}
+                  DriWheel_L:
+                    {}
+                  DriWheel_R:
+                    {}
+                  LIDAR:
+                    MirKinova/LIDAR:
+                      {}
+                  Pantilt_PanLink:
+                    Pantilt_TiltLink:
+                      Head:
+                        kinect_color:
+                          MirKinova/kinect_color:
+                            {}
+                        kinect_range:
+                          MirKinova/kinect_range:
+                            {}
+                  UniwheelPivot_LB:
+                    Uniwheel_LB:
+                      {}
+                  UniwheelPivot_LF:
+                    UniWheel_LF:
+                      {}
+                  UniwheelPivot_RB:
+                    Uniwheel_RB:
+                      {}
+                  UniwheelPivot_RF:
+                    Uniwheel_RF:
+                      {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /MirKinova/hand_camera/image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: hand_camera
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /MirKinova/hand_depth/range_image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: hand_depth
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /MirKinova/kinect_color/image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: kinect_color
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /MirKinova/kinect_range/range_image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: kinect_depth
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /MirKinova/depth_camera/range_image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: front_depth
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /semantic_point_cloud
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Points
+      Topic: /MirKinova/LIDAR/laser_scan_filter
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+  Value: true
+  Views:
+    Current:
+      Class: rviz/XYOrbit
+      Distance: 14.411725997924805
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7853981852531433
+      Focal Point:
+        X: 0.060840100049972534
+        Y: 0.1609152853488922
+        Z: -7.261478458531201e-07
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.4997977018356323
+      Target Frame: base_link
+      Yaw: 5.0399861335754395
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1016
+  Help:
+    collapsed: false
+  Hide Left Dock: false
+  Hide Right Dock: false
+  MotionPlanning:
+    collapsed: false
+  MotionPlanning - Trajectory Slider:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000200000000000001f30000039efc0200000009fb000000100044006900730070006c006100790073010000003d0000039e000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc00000253000001880000000000fffffffa000000010100000002fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670000000000000002bc000001f300fffffffb0000000a0049006d0061006700650000000000ffffffff0000000000000000fb0000001400680061006e0064005f00640065007000740068020000034d000000fe00000280000001e0fb00000018006b0069006e006500630074005f0064006500700074006802000002bf000000ec00000280000001e0000000020000039b00000106fc0100000003fb0000001600680061006e0064005f00630061006d00650072006100000000000000039b0000008f00fffffffb0000001600660072006f006e0074005f006400650070007400680200000254000001ce00000280000001e0fb00000018006b0069006e006500630074005f0063006f006c006f007202000002530000003f00000280000001e0000000fc0000039e00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 757
+  X: 610
+  Y: 39
+  front_depth:
+    collapsed: false
+  hand_camera:
+    collapsed: false
+  hand_depth:
+    collapsed: false
+  kinect_color:
+    collapsed: false
+  kinect_depth:
+    collapsed: false

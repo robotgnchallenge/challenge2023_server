@@ -1,0 +1,6 @@
+kinova-ros/kinova_demo
+/home/cheang/server_ws/devel/.private/kinova_demo/cmake.lock /home/cheang/server_ws/devel/./cmake.lock
+/home/cheang/server_ws/devel/.private/kinova_demo/share/kinova_demo/cmake/kinova_demoConfig.cmake /home/cheang/server_ws/devel/share/kinova_demo/cmake/kinova_demoConfig.cmake
+/home/cheang/server_ws/devel/.private/kinova_demo/share/kinova_demo/cmake/kinova_demoConfig-version.cmake /home/cheang/server_ws/devel/share/kinova_demo/cmake/kinova_demoConfig-version.cmake
+/home/cheang/server_ws/devel/.private/kinova_demo/lib/pkgconfig/kinova_demo.pc /home/cheang/server_ws/devel/lib/pkgconfig/kinova_demo.pc
+/home/cheang/server_ws/devel/.private/kinova_demo/lib/python3/dist-packages/kinova_demo/__init__.py /home/cheang/server_ws/devel/lib/python3/dist-packages/kinova_demo/__init__.py

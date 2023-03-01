@@ -1,0 +1,16 @@
+<launch>
+    <arg name="gui" default="False" />
+
+    <!-- <param name="robot_description" textfile="" /> -->
+    <param name="use_gui" value="$(arg gui)" />
+ 
+    <!-- 设置参数 -->
+    <param name="robot_description" textfile="/home/cheang/catkin_ws/src/minnav_moma_description/urdf/v3/MOMA_V3_URDF.urdf" />
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+ 
+    <!-- 启动 rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" />
+ 
+</launch>

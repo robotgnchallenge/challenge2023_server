@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>hybrid_mpc_local_planner</name>
+    <version>1.17.1</version>
+    <description>
+
+        This package provides an implementation of the Model Predictive Control approach for local planning and control.
+
+    </description>
+    <author>yangtaozheng</author>
+    <author>yangtaozheng@bytedance.com</author>
+    <maintainer email="yangtaozheng@bytedance.com">ytz</maintainer>
+    <license>BSD</license>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <build_depend>cmake_modules</build_depend>
+
+    <depend>base_local_planner</depend>
+    <depend>costmap_2d</depend>
+    <depend>dynamic_reconfigure</depend>
+    <depend>eigen</depend>
+    <depend>nav_core</depend>
+    <depend>nav_msgs</depend>
+    <depend>pluginlib</depend>
+    <depend>sensor_msgs</depend>
+    <depend>roscpp</depend>
+    <depend>tf2</depend>
+    <depend>tf2_geometry_msgs</depend>
+    <depend>tf2_ros</depend>
+    <build_depend>message_generation</build_depend>
+    <exec_depend>message_generation</exec_depend>
+    <exec_depend>message_runtime</exec_depend>
+    <export>
+        <nav_core plugin="${prefix}/mlpp_plugin.xml"/>
+    </export>
+
+</package>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default="MirKinova"/>
+  <arg name="no_gui" default="false" doc="Start Webots with minimal GUI"/>
+  <arg name="ros_control"  default="true" doc="Start Webots with ros control, otherwise start it standalone"/>
+  <arg name="localization"  default="none"/>
+  <arg name="planning"  default="moveit"/>
+  <arg name="rviz"  default="false"/>
+  <arg name="camera" default="true"/>
+  <arg name="datapath" default="$(find webots_ros)/worlds"/>
+  <arg name="scene_name" default="random_scene_3_3_ros.wbt"/>
+  <arg name="mobile_base" default="Mir"/>
+  <arg name="true_false" default="false"/> 
+  <arg name="laser_topic" default="/MirKinova/front_lidar" unless="$(arg true_false)"/>
+  <arg name="laser_topic" value="/MirKinova/LIDAR" if="$(arg true_false)"/>
+  
+
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+    <param name="resolution" value="0.01" />
+    <param name="frame_id" type="string" value="hand_depth" />
+    <param name="sensor_model/max_range" value="100.0" />
+    <remap from="/cloud_in" to="/MirKinova/hand_depth/points" />
+  </node>
+
+
+  <include file="$(find webots_ros)/launch/webots.launch">
+    <!-- <arg name="mode" value="realtime"/> -->
+    <arg name="mode" value="fast"/>
+    <arg name="no_gui" value="$(arg no_gui)"/>
+    <arg name="world" value="$(arg datapath)/$(arg scene_name)"/>
+  </include>
+
+
+  <!-- ros_control launch file -->
+  <group if="$(arg ros_control)">
+    <include file="$(find webots_ros)/launch/mobile_arm_ros_control.launch">
+      <arg name="robot_name" value="$(arg robot_name)"/>
+      <arg name="localization" value="$(arg localization)"/>
+      <arg name="planning" value="$(arg planning)"/>
+      <arg name="rviz" value="$(arg rviz)"/>
+      <arg name="mobile_base" value="$(arg mobile_base)"/>
+    </include>
+  </group>
+
+  <!-- camera info and depth2cloud launch file -->
+  <group if="$(arg camera)">
+    <include file="$(find webots_ros)/launch/mobile_arm_camera.launch">
+      <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+  </group>
+
+
+  <include file="$(find webots_ros)/launch/mobile_arm_moveit.launch"></include>
+
+  <param name="octomap_frame" type="string" value="odom_combined" />
+  <param name="octomap_resolution" type="double" value="0.05" />
+  <param name="max_range" type="double" value="5.0" />
+  <rosparam command="load" file="$(find webots_ros)/config/hand_camera_octomap.yaml" />
+
+  
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+        <remap from="scan" to="/$(arg laser_topic)/laser_scan" />
+        <remap from="scan_filtered" to="/$(arg laser_topic)/laser_scan_filter"/>
+        <rosparam command="load" file="$(find webots_ros)/config/laser_filter.yaml" />
+  </node>
+
+</launch>
