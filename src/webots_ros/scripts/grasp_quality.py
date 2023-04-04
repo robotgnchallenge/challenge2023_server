@@ -316,7 +316,7 @@ def get_camera_pose(robot_name):
 
 
 def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
-                          obj_idx, data_root):
+                          obj_idx, data_root, pc_full):
     grasp_info = {}
     tf_trans = tf.Transformer(True, rospy.Duration(10.0))
 
@@ -456,6 +456,21 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
     grasp_info['obj_pose_mat'] = obj_pose_mat
     grasp_info['grasp_list_obj_frame'] = grasp_list_obj_frame
 
+    """
+    #Grasp Visualize
+    gg = GraspGroup(grasp_list_obj_frame)
+    gg_pc = GraspGroup(grasp_list)
+    cloud = o3d_model_list[0]
+
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(pc_full)
+    o3d.io.write_point_cloud("./pc.ply",pcd)
+
+    pcd_load = o3d.io.read_point_cloud("./pc.ply")
+    vis_grasps(gg, cloud)
+    vis_grasps(gg_pc, pcd_load)
+    """
+
     return grasp_info
 
 
@@ -477,9 +492,9 @@ def collision_detection(gg_obj_frame, cloud):
 
 
 def force_closure(gripper_config, grasp_poses, target_obj_pose, obj_idx,
-                  data_root):
+                  data_root, pc_full):
     pc_info = preprocess_grasp_pose(gripper_config, grasp_poses,
-                                    target_obj_pose, obj_idx, data_root)
+                                    target_obj_pose, obj_idx, data_root, pc_full)
 
     score_fc, dexgrasp_list = grasp_quality(pc_info['config'],
                                             pc_info['dexmodel_list'],

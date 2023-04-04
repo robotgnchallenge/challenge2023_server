@@ -238,7 +238,6 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
         obj_src_pose = np.array([float(p) for p in obj_src_pose]).reshape(4, 4)
 
         (obj_trans, obj_rot) = pose_4x4_to_pos_quat(obj_src_pose)
-        obj_rot[0], obj_rot[3] = obj_rot[3], obj_rot[0]
 
         obj_pose = np.concatenate((obj_trans, obj_rot), axis=0)
 
@@ -1126,7 +1125,7 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
                     score_grasp = force_closure(self.gripper_config,
                                                 grasp_pose_global,
                                                 self.obj_pose[obj_idx],
-                                                target_obj_idx, self.data_root)
+                                                target_obj_idx, self.data_root, pc_full)
                     state_info = f"[{self.client_address}][GRASP] Get {grasp_pose_global.shape[0]} Grasp pose and get result {score_grasp}"
                     print(state_info)
                     if (score_grasp != 0):
