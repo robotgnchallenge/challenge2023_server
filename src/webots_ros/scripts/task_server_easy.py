@@ -47,6 +47,7 @@ target_loc = ""
 goal_loc = ""
 target_obj = ""
 grasp_pose_global = None
+grasp_width_global = None
 home_dir = os.getenv("HOME")
 
 msg_server = " "
@@ -913,6 +914,7 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
         global goal_loc
         global target_obj
         global grasp_pose_global
+        global grasp_width_global
         global msg_server
         global goal_index
         global score_e
@@ -937,10 +939,17 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
                 msg = data.decode(FORMAT)
                 if (str.isnumeric(msg)):
                     grasp_pose = []
+                    grasp_width = []
             except Exception:
                 data = pickle.loads(data)
-                grasp_pose.append(data)
+                if(type(data) == type(dict())):
+                    grasp_pose.append(data['pose'])
+                    grasp_width.append(data['width'])
+                else:
+                    grasp_pose.append(data)
+                    grasp_width.append(self.gripper_config[0])
                 grasp_pose_global = grasp_pose
+                grasp_width_global = grasp_width
                 state_info = f"[{self.client_address}][Grasp] Server recieved grasp data."
                 self.request.sendall(state_info.encode(FORMAT))
             if (msg.startswith("[WEBOTS_INFO]")):
@@ -1116,13 +1125,18 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
                 if (self.state == "START_GSP"):
                     print(f"[{self.client_address}]" + msg)
                     grasp_pose_global = np.array(grasp_pose_global)
+                    grasp_width_global = np.array(grasp_width_global)
+                    gripper_conf = []
                     if (grasp_pose_global.shape[0] > 10):
                         grasp_pose_global = grasp_pose_global[0:10]
+                        grasp_width_global = grasp_width_global[0:10]
+                    for i in range(grasp_width_global.shape[0]):
+                        gripper_conf.append([grasp_width_global[i]] + self.gripper_config[1:])
                     _, rgb, _, cam_K, pc_full, _, _ = self.subscribe_pc_ros(
                         "Sim", "/MirKinova/hand_camera/image",
                         "/MirKinova/hand_depth/points")
                     obj_idx = self.grasp_obj_idx.index(target_obj_idx)
-                    score_grasp = force_closure(self.gripper_config,
+                    score_grasp = force_closure(gripper_conf,
                                                 grasp_pose_global,
                                                 self.obj_pose[obj_idx],
                                                 target_obj_idx, self.data_root, pc_full)

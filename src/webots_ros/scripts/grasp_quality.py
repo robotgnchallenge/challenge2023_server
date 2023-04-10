@@ -361,7 +361,7 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
         x_vector = axis_pt - ori_pt
         sum_square = math.sqrt(
             pow(x_vector[0], 2) + pow(x_vector[1], 2) + pow(x_vector[2], 2))
-        center_offset = (gripper_config[2] / sum_square) * x_vector
+        center_offset = (gripper_config[i][2] / sum_square) * x_vector
         offset.append(center_offset)
 
         gsp_pose = set_geometry_pose([
@@ -402,7 +402,7 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
                                              '/gsp_' + str(i), rospy.Time(0))
         grasp_list.append(
             np.array([
-                1, gripper_config[0], gripper_config[1], gripper_config[2],
+                1, gripper_config[i][0], gripper_config[i][1], gripper_config[i][2],
                 rot_mat[i][0][0], rot_mat[i][0][1], rot_mat[i][0][2],
                 rot_mat[i][1][0], rot_mat[i][1][1], rot_mat[i][1][2],
                 rot_mat[i][2][0], rot_mat[i][2][1], rot_mat[i][2][2],
@@ -431,7 +431,7 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
 
         grasp_list_obj_frame.append(
             np.array([
-                1, gripper_config[0], gripper_config[1], gripper_config[2],
+                1, gripper_config[i][0], gripper_config[i][1], gripper_config[i][2],
                 gsp_rot_obj[0][0], gsp_rot_obj[0][1], gsp_rot_obj[0][2],
                 gsp_rot_obj[1][0], gsp_rot_obj[1][1], gsp_rot_obj[1][2],
                 gsp_rot_obj[2][0], gsp_rot_obj[2][1], gsp_rot_obj[2][2],
