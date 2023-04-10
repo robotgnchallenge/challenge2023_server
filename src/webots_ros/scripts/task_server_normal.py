@@ -832,6 +832,7 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
                     grasp_width.append(self.gripper_config[0])
                 grasp_pose_global = grasp_pose
                 grasp_width_global = grasp_width
+                state_info = f"[{self.client_address}][Grasp] Server recieved grasp data."
                 self.request.sendall(state_info.encode(FORMAT))
             if (msg.startswith("[WEBOTS_INFO]")):
                 client_set.add(self)
