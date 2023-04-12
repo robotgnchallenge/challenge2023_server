@@ -25,7 +25,7 @@ from math_utils import pose_4x4_to_pos_quat
 
 collision_param = {
     'voxel_size': 0.01,
-    'approach_dist': 0.07,
+    'approach_dist': 0.02,
     'collision_thresh': 0.01
 }
 
@@ -486,8 +486,8 @@ def collision_detection(gg_obj_frame, cloud):
     gg = gg[~collision_mask]
     collision_mask = np.array(collision_mask)
     collision_idx = np.where(collision_mask == True)[0]
-    collision = np.zeros((collision_mask.shape[0], ))
-    collision[collision_idx] = 1
+    collision = np.ones((collision_mask.shape[0], ))
+    collision[collision_idx] = 0
     return collision
 
 
