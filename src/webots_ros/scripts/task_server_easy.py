@@ -400,7 +400,7 @@ class TaskSocketServer(socketserver.StreamRequestHandler):
             for p in pc:
                 pc_full.append([p[0], p[1], p[2]])
 
-        cam_K = np.zeros((3, 3))
+        cam_K = np.eye(3)
         cam_K[0, 0] = fx
         cam_K[0, 2] = cx
         cam_K[1, 1] = fy
