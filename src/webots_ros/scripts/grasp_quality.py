@@ -355,8 +355,8 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
             [gsp_trans_tran[i][0], gsp_trans_tran[i][1], gsp_trans_tran[i][2]])
         axis_pt = np.array([
             gsp_trans_tran[i][0] + tran_rotmat[0, 0],
-            gsp_trans_tran[i][0] + tran_rotmat[1, 0],
-            gsp_trans_tran[i][0] + tran_rotmat[2, 0]
+            gsp_trans_tran[i][1] + tran_rotmat[1, 0],
+            gsp_trans_tran[i][2] + tran_rotmat[2, 0]
         ])
         x_vector = axis_pt - ori_pt
         sum_square = math.sqrt(
@@ -420,8 +420,8 @@ def preprocess_grasp_pose(gripper_config, grasp_poses, target_obj_pose,
             [gsp_trans_obj[0], gsp_trans_obj[1], gsp_trans_obj[2]])
         axis_pt = np.array([
             gsp_trans_obj[0] + gsp_rot_obj[0, 0],
-            gsp_trans_obj[0] + gsp_rot_obj[1, 0],
-            gsp_trans_obj[0] + gsp_rot_obj[2, 0]
+            gsp_trans_obj[1] + gsp_rot_obj[1, 0],
+            gsp_trans_obj[2] + gsp_rot_obj[2, 0]
         ])
         x_vector = axis_pt - ori_pt
         sum_square = math.sqrt(
